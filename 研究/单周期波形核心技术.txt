@@ -1,0 +1,11 @@
+metro.c 175行
+// Generate one cycle of a sine wave at the desired frequency
+  const double freq = 440.0 * 2.0;
+  const double amp  = 0.5;
+  self->wave_len    = (uint32_t)(rate / freq);
+  self->wave        = (float*)malloc(self->wave_len * sizeof(float));
+  for (uint32_t i = 0; i < self->wave_len; ++i) {
+    self->wave[i] = (float)(sin(i * 2 * M_PI * freq / rate) * amp);
+  }
+
+  return (LV2_Handle)self;
